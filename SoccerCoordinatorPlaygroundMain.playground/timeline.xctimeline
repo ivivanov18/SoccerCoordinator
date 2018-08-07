@@ -3,7 +3,12 @@
    version = "3.0">
    <TimelineItems>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/ivan/Documents/apps/TREEHOUSE/iOSTechDegree/Unit1/SoccerCoordinator/SoccerCoordinatorPlaygroundMain.playground#CharacterRangeLen=7&amp;CharacterRangeLoc=2890&amp;EndingColumnNumber=12&amp;EndingLineNumber=132&amp;StartingColumnNumber=5&amp;StartingLineNumber=132&amp;Timestamp=555317838.665603"
+         documentLocation = "file:///Users/ivan/Documents/apps/TREEHOUSE/iOSTechDegree/Unit1/SoccerCoordinator/SoccerCoordinatorPlaygroundMain.playground#CharacterRangeLen=0&amp;CharacterRangeLoc=3841&amp;EndingColumnNumber=25&amp;EndingLineNumber=157&amp;StartingColumnNumber=25&amp;StartingLineNumber=157&amp;Timestamp=555320501.673925"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/ivan/Documents/apps/TREEHOUSE/iOSTechDegree/Unit1/SoccerCoordinator/SoccerCoordinatorPlaygroundMain.playground#CharacterRangeLen=1&amp;CharacterRangeLoc=3841&amp;EndingColumnNumber=26&amp;EndingLineNumber=157&amp;StartingColumnNumber=25&amp;StartingLineNumber=157&amp;Timestamp=555320501.674127"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>

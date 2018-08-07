@@ -130,16 +130,21 @@ let player18 : [String: Any] = [
     "guardianNames": "Hyman and Rachel Krustofski"
 ]
 
-let players = [player1, player2, player3, player4, player5, player6,
+let availablePlayers = [player1, player2, player3, player4, player5, player6,
                player7, player8, player9, player10, player11, player12,
                player13, player14, player15, player16, player17, player18]
 
 var experiencedPlayers = [[String: Any]]()
 var unexperiencedPlayers = [[String: Any]]()
+var teamDragons = [[String: Any]]()
+var teamSharks = [[String: Any]]()
+var teamRaptors = [[String: Any]]()
+var league : [[String: Any]] = [teamDragons, teamSharks, teamRaptors]
 
-
-func separatePlayersInExpAndNotExperiencedGroups() -> Void{
-    for player in players {
+/// Function that divides the players in two groups
+/// experienced and unexperienced players
+func separatePlayersInExpAndNotExperiencedGroups(from playersPool: [[String: Any]]) -> Void{
+    for player in playersPool {
         if player["isExperienced"] as? Bool == true{
             experiencedPlayers.append(player)
         }else{
@@ -148,4 +153,10 @@ func separatePlayersInExpAndNotExperiencedGroups() -> Void{
     }
 }
 
+/// MAIN Function
+func main() -> Void{
+    separatePlayersInExpAndNotExperiencedGroups(from: availablePlayers)
+}
 
+
+main()
