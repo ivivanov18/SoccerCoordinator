@@ -135,28 +135,77 @@ let availablePlayers = [player1, player2, player3, player4, player5, player6,
                player13, player14, player15, player16, player17, player18]
 
 var experiencedPlayers = [[String: Any]]()
-var unexperiencedPlayers = [[String: Any]]()
+var inexperiencedPlayers = [[String: Any]]()
 var teamDragons = [[String: Any]]()
 var teamSharks = [[String: Any]]()
 var teamRaptors = [[String: Any]]()
-var league : [[String: Any]] = [teamDragons, teamSharks, teamRaptors]
+var leagueTeams : [[[String: Any]]] = [teamDragons, teamSharks, teamRaptors]
 
-/// Function that divides the players in two groups
-/// experienced and unexperienced players
-func separatePlayersInExpAndNotExperiencedGroups(from playersPool: [[String: Any]]) -> Void{
-    for player in playersPool {
+/// Function that add the experienced players to the teams of the league
+func addExperiencedPlayers() -> Void{
+
+    let lengthLeague = leagueTeams.count
+
+    for i in 0..<experiencedPlayers.count{
+        let playerToAdd = experiencedPlayers[i]
+        let modulo = i % lengthLeague
+
+        if modulo == 0{
+            teamDragons.append(playerToAdd)
+        }else if modulo == 1{
+            teamSharks.append(playerToAdd)
+        }else{
+            teamRaptors.append(playerToAdd)
+        }
+    }
+}
+
+
+/// Function that add the unexperienced players to the teams of the league
+func addInexperiencedPlayers() -> Void{
+
+    let lengthLeague = leagueTeams.count
+
+    for i in 0..<inexperiencedPlayers.count{
+        let playerToAdd = inexperiencedPlayers[i]
+        let modulo = i % lengthLeague
+
+        if modulo == 0{
+            teamDragons.append(playerToAdd)
+        }else if modulo == 1{
+            teamSharks.append(playerToAdd)
+        }else{
+            teamRaptors.append(playerToAdd)
+        }
+    }
+}
+
+/// Function that separates the players evenly by experienced and unexperienced
+/// into the teams of the league
+func separatePlayersInExpAndNotExperiencedGroups(from availablePlayers: [[String: Any]]) -> Void{
+    for player in availablePlayers{
         if player["isExperienced"] as? Bool == true{
             experiencedPlayers.append(player)
         }else{
-            unexperiencedPlayers.append(player)
+            inexperiencedPlayers.append(player)
         }
     }
 }
 
 /// MAIN Function
 func main() -> Void{
+    //----Divide players into evenly experienced teams -----
     separatePlayersInExpAndNotExperiencedGroups(from: availablePlayers)
+    addExperiencedPlayers()
+    addInexperiencedPlayers()
+    
+    //----Send letters -----
 }
 
 
 main()
+experiencedPlayers
+inexperiencedPlayers
+
+
+
