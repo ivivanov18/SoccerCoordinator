@@ -50,7 +50,7 @@ let player7 : [String: Any] = [
     "name": "Sammy Adams",
     "height": 45,
     "isExperienced": false,
-    "guardianNames": "Jim and Jan Smith"
+    "guardianNames": "Jeff Adams"
 ]
 
 let player8 : [String: Any] = [
