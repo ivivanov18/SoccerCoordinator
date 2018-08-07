@@ -139,10 +139,25 @@ var inexperiencedPlayers = [[String: Any]]()
 var teamDragons = [[String: Any]]()
 var teamSharks = [[String: Any]]()
 var teamRaptors = [[String: Any]]()
-var leagueTeams : [[[String: Any]]] = [teamDragons, teamSharks, teamRaptors]
+var leagueTeams : [String: [[String: Any]]] =
+                    ["Dragons":teamDragons, "Sharks": teamSharks, "Raptors": teamRaptors]
+var letters = [String: String]()
+
+
+/// Function that separates the players evenly by experienced and unexperienced
+/// into the teams of the league
+func separatePlayersInExpAndNotExperiencedGroups(from availablePlayers: [[String: Any]]) -> Void{
+    for player in availablePlayers{
+        if player["isExperienced"] as? Bool == true{
+            experiencedPlayers.append(player)
+        }else{
+            inexperiencedPlayers.append(player)
+        }
+    }
+}
 
 /// Function that add the experienced players to the teams of the league
-func addExperiencedPlayers() -> Void{
+func addExperiencedPlayersToLeagueTeams() -> Void{
 
     let lengthLeague = leagueTeams.count
 
@@ -158,11 +173,14 @@ func addExperiencedPlayers() -> Void{
             teamRaptors.append(playerToAdd)
         }
     }
+    
+    leagueTeams = ["Dragons":teamDragons, "Sharks": teamSharks, "Raptors": teamRaptors]
+
 }
 
 
 /// Function that add the unexperienced players to the teams of the league
-func addInexperiencedPlayers() -> Void{
+func addInexperiencedPlayersToLeagueTeams() -> Void{
 
     let lengthLeague = leagueTeams.count
 
@@ -178,34 +196,46 @@ func addInexperiencedPlayers() -> Void{
             teamRaptors.append(playerToAdd)
         }
     }
+    
+    leagueTeams = ["Dragons" : teamDragons, "Sharks" : teamSharks, "Raptors" : teamRaptors]
 }
 
-/// Function that separates the players evenly by experienced and unexperienced
-/// into the teams of the league
-func separatePlayersInExpAndNotExperiencedGroups(from availablePlayers: [[String: Any]]) -> Void{
-    for player in availablePlayers{
-        if player["isExperienced"] as? Bool == true{
-            experiencedPlayers.append(player)
-        }else{
-            inexperiencedPlayers.append(player)
+/// Function that generates the letter
+func generateLetters() -> Void{
+    for (teamName, team) in leagueTeams {
+        for player in team {
+            let guardianNames = player["guardianNames"]
+            let playerName = player["name"]
+            let letter: String = """
+            Dear \(guardianNames ?? "nil"),
+            \(playerName  ?? "nil") will attend the first practice of the league on Saturday 18th August with his team, the \(String(describing: teamName)).
+            """
+            letters["\(playerName)"] =  letter
         }
+    }
+}
+
+/// Prints the content of the letters
+func printLetters() -> Void {
+    for (name, letter) in letters{
+        print(letter)
     }
 }
 
 /// MAIN Function
 func main() -> Void{
-    //----Divide players into evenly experienced teams -----
+
     separatePlayersInExpAndNotExperiencedGroups(from: availablePlayers)
-    addExperiencedPlayers()
-    addInexperiencedPlayers()
+    addExperiencedPlayersToLeagueTeams()
+    addInexperiencedPlayersToLeagueTeams()
     
-    //----Send letters -----
+    generateLetters()
+    printLetters()
 }
 
 
 main()
-experiencedPlayers
-inexperiencedPlayers
+
 
 
 
