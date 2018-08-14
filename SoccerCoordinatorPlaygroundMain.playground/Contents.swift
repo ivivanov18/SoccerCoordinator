@@ -141,6 +141,10 @@ var teamSharks = [[String: Any]]()
 var teamRaptors = [[String: Any]]()
 var leagueTeams : [String: [[String: Any]]] =
                     ["Dragons":teamDragons, "Sharks": teamSharks, "Raptors": teamRaptors]
+let practiceTimes: [String: String] =
+                                        ["Dragons":"March 17, 1pm",
+                                         "Sharks": "March 17, 3pm",
+                                         "Raptors":"March 18, 1pm"]
 var letters = [String: String]()
 
 
@@ -206,9 +210,10 @@ func generateLetters() -> Void{
         for player in team {
             let guardianNames = player["guardianNames"]
             let playerName = player["name"]
+            let practiceTime: String = practiceTimes[teamName]!
             let letter: String = """
             Dear \(guardianNames ?? "nil"),
-            \(playerName  ?? "nil") will attend the first practice of the league on Saturday 18th August with his team, the \(String(describing: teamName)).
+            \(playerName  ?? "nil") will attend the first practice of the league on \(practiceTime ?? "nil") with the team, the \(String(describing: teamName)).
             """
             letters["\(playerName)"] =  letter
         }
